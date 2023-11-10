@@ -1,6 +1,6 @@
 ## AT-HYG Version Details
 
-The current version is v2.0. Information about older versions can be found here.
+The current version is v2.2. Information about older versions can be found here.
 
 ### Version 1.x Data Format
 
