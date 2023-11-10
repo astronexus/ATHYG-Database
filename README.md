@@ -16,15 +16,23 @@ By merging AT with HYG, the "classical" IDs and names for a large number of Tych
 
 ### Download Format
 
+#### Full Catalog (data/athyg_v22-*.csv)
+
 The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.2):
 
 `cat athyg_v22-1.csv athyg_v22-2.csv > athyg_v22.csv`
 
 The full CSV can then be imported into the database tool of your choosing.
 
+#### Subset files (data/subsets)
+
+Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simle extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
+
+See data/subsets/README.md for more details about these files.
+
 ### Current Version: 
 
-The current version of AT-HYG is version v2.2 (v2/athyg_v22-*.csv.gz). 
+The current version of AT-HYG is version v2.2 (data/athyg_v22-*.csv.gz). 
 
 #### Changes from version 2.1:
 
