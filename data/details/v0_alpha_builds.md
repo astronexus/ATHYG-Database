@@ -1,4 +1,4 @@
-## Additional Details
+## Additional Details for v0.x (Initial Alpha Builds)
 
 This goes pretty deep into some data-quality and data-processing weeds. Feel free to skip if you don't want the full story; just note that issues described here will likely affect later versions of the database.
 

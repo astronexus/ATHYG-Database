@@ -1,4 +1,4 @@
-## Additional Details
+## Additional Details for Version 1.x Builds (first main public release, concentrating on Gaia position data)
 
 This goes pretty deep into some data-quality and data-processing weeds. Feel free to skip if you don't want the full story; just note that issues described here will likely affect later versions of the database.
 
