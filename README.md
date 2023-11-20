@@ -16,11 +16,11 @@ By merging AT with HYG, the "classical" IDs and names for a large number of Tych
 
 ### Download Format
 
-#### Full Catalog (data/athyg_v22-*.csv)
+#### Full Catalog (data/athyg_v23-*.csv)
 
-The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.2):
+The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.3):
 
-`cat athyg_v22-1.csv athyg_v22-2.csv > athyg_v22.csv`
+`cat athyg_v23-1.csv athyg_v23-2.csv > athyg_v23.csv`
 
 The full CSV can then be imported into the database tool of your choosing.
 
@@ -32,19 +32,25 @@ See data/subsets/README.md for more details about these files.
 
 ### Current Version: 
 
-The current version of AT-HYG is version v2.2 (data/athyg_v22-*.csv.gz). 
+The current version of AT-HYG is version v2.3 (data/athyg_v23-*.csv.gz). 
 
-#### Changes from version 2.1:
+#### Changes from version 2.2:
 
-##### Spectral types for Tycho-2 stars
+##### Additional radial velocity data for ~ 10K stars
+All versions of AT-HYG from v1.1 to v2.3 identified a set of Tycho-2 stars that lacked Gaia DR3 cross-references in the original query to get the references, but which do have Gaia DR2 or DR3 IDs, and hence Gaia parallax data, according to the SIMBAD service of online astronomical object data (https://simbad.cds.unistra.fr/simbad/). This is a group of about 10K stars identified during the AT-HYG v1.x builds as a set of stars desirable to get additional information for, using SIMBAD to get the relevant information. In particular, it consists of the relatively brighter stars in Tycho-2 (down to magnitude 10.0) where this information was missing originally.
 
-Spectral types for 351,864 stars in Tycho-2 were obtained from the catalog at https://cdsarc.cds.unistra.fr/viz-bin/cat/III/231 (original reference: "The Tycho-2 Spectral Type Catalog", Candace O. Wright et al 2003 AJ 125 359). These follow the usual MK spectral type categories. The update was a fairly straightforward addition to the Augmented Tycho catalog.
+From v1.1 to v2.2, this supplementary lookup set included Gaia DR2 and DR3 parallaxes but not proper motions or radial velocities. The absence of proper motions was not considered significant because essentially all Tycho-2 stars have good proper motions from Tycho-2. However, Tycho-2 has no radial velocities, so this subset of stars had consistently incomplete velocity data.
 
-When AT-HYG v2.2 was built, it used these spectral types in order of priority:
+The update in v2.3 works with the exact same set of stars, and adds similar lookups for SIMBAD's current preferred proper motions and radial velocities, inserting them under the same conditions that v1.1 through v2.2 used to insert the SIMBAD Gaia parallax data:
 
-* This catalog ("The Tycho-2 Spectral Type Catalog"): `spect_src` = "T"
-* The HYG catalog's original sources, predominantly the original HD catalog: `spect_src` = "HYG"
-* No value: `spect_src` = "NONE"
+* there was no prior cross-reference between Tycho-2 and Gaia, so the original query contained no Gaia position or velocity data (most common case)
+* there was a prior cross-reference, but it did not return Gaia radial velocity data when it was available (very uncommon case)
+
+The update primarily affects stars in the range VT = 7.0 to 10.0, so it has negligible impact on naked-eye stars (from Earth), but has a more noticeable one on stars somewhat dimmer than the usual naked eye limits.
+
+##### Data format changes
+
+To save space in CSV format, the `NONE` value (for data sources when the source contained no usable data) has been changed to `N`.
 
 #### Comparison to HYG
 
