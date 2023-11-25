@@ -1,59 +1,27 @@
 ## AT-HYG Version Details
 
-The current version is v2.3. Information about older versions can be found here.
-
-### Version 1.x Data Format
-
-Version 1.x has the following data fields:
-
-1. `id`: A numeric ID for each star, after sorting all entries by right ascension.
-2. `tyc`: The Tycho-2 ID, with leading zeros removed from the first and second portion (for consistency with Gaia linking tables)
-3. `gaia`: The Gaia Data Release 3 ID.
-4. `hyg`: The HYG main catalog ID from HYG v3.
-5. `hip`: The HIPPARCOS ID, from HYG if known, otherwise Tycho-2.
-6. `hd`: The Henry Draper (HD) catalog ID, from HYG if known, otherwise Tycho-2.
-7. `hr`: The Harvard / Yale Bright Star Catalog ID, from HYG.
-8. `gl`: The Gliese ID, from HYG
-9. `bayer`: The Bayer (Greek letter) designation, from HYG
-10. `flam`: The Flamsteed number, from HYG
-11. `con`: The three-letter constellation abbreviation, from HYG
-12. `proper`: A proper name for the star, from HYG
-13. `ra`: Right ascension (epoch + equinox 2000.0), in hours, from HYG or TYC
-14. `dec`: Declination (epoch + equinox 2000.0), in degrees, from HYG or TYC
-15. `pos_src`: Indicator of source for the position fields `ra` and `dec` (see below)
-16. `dist`: Distance from Sol in parsecs. From Gaia if known, otherwise HYG.
-17. `x0`
-18. `y0`
-19. `z0`: These three fields are Cartesian coordinates. The directions are such that x is towards RA 0, Dec 0, y towards RA 6 hr., Dec 0, and z towards Dec 90 degrees.
-20. `dist_src`: Indicator of source for the distance fields `dist`, `x0`, `y0`, `z0` (see below). `x0`, `y0`, and `z0` also depend on `ra` and `dec`, so they will also be determined by the position source. An extremely common combination is raw distance from Gaia but the position from TYC.
-21. `mag`: V or VT magnitude for the star
-22. `absmag`: Corresponding absolute magnitude
-23. `mag_src`: Indicator of source for the magnitude field `mag` (see below). `absmag` depends on both apparent magnitude and distance, so may be determined by values from two sources.
-
-Since different versions of the DB may add or remove records, the `id` value is necessarily associated with a specific version. 
-
-### Version 2.x Data Format
-
-The fields for Version 1 are present unchanged, but with the following new fields:
-
-24. `rv`: Radial velocity in km/sec.
-25. `rv_src`: Indicator of source for the radial velocity
-26. `pm_ra`: Proper motion in right ascension, milliarcseconds/year (aleady multiplied by cos(dec))
-27. `pm_dec`: Proper motion in declination, milliarcseconds/year
-28. `pm_src`: Indicator of source for the proper motions
-29. `vx`:  
-30. `vy`:  
-31. `vz`: These three fields are Cartesian velocity values, using the same coordinate system described for the `x0`,`y0`, and `z0` fields above.
-32. `spect`: MK spectral type (v2.2+)
-33. `spect_src`: Source for the spectral type (v2.2+)
-
-Additionally, in versions 2.1 and up, the following added field is present:
-
-34. `ci`: the color index (BT-VT for Tycho-2 stars, B-V for others). This field is inserted after the `absmag` field, to keep magnitude-related data grouped together.
-
 ### Version-Specific Changes
 
-The current version is v2.3. See the main README.md file for a description of this version's changes.
+The current version is v2.4. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v2.2 to v2.3:
+##### Additional radial velocity data for ~ 10K stars
+All versions of AT-HYG after v1.0 identified a set of about 10K Tycho-2 stars that lacked Gaia DR3 cross-references in the original query to get the references, but which do have Gaia DR2 or DR3 IDs, and hence Gaia parallax data, according to the SIMBAD service of online astronomical object data (https://simbad.cds.unistra.fr/simbad/). 
+
+This group of stars was identified during the AT-HYG v1.x builds as a set of stars desirable to get additional information for, using SIMBAD to get the relevant information. In particular, it consists of the relatively brighter stars in Tycho-2 (down to magnitude 10.0) where this information was missing originally.
+
+From v1.1 to v2.2, this supplementary lookup set included Gaia DR2 and DR3 parallaxes but not proper motions or radial velocities. The absence of proper motions was not considered significant because essentially all Tycho-2 stars have good proper motions from Tycho-2. However, Tycho-2 has no radial velocities, so this subset of stars had consistently incomplete velocity data.
+
+The update in v2.3 works with the exact same set of stars, and adds similar lookups for SIMBAD's current preferred proper motions and radial velocities, inserting them under the same conditions that v1.1 through v2.2 used to insert the SIMBAD Gaia parallax data:
+
+* there was no prior cross-reference between Tycho-2 and Gaia, so the original query contained no Gaia position or velocity data (most common case)
+* there was a prior cross-reference, but it did not return Gaia radial velocity data when it was available (very uncommon case)
+
+The update primarily affects stars in the range VT = 7.0 to 10.0, so it has negligible impact on naked-eye stars (from Earth), but has a more noticeable one on stars somewhat dimmer than the usual naked eye limits.
+
+##### Data format changes
+
+To save space in CSV format, the `NONE` value (for data sources when the source contained no usable data) has been changed to `N`.
 
 #### Changes from v2.1 to v2.2
 ##### Spectral types for Tycho-2 stars
@@ -123,6 +91,57 @@ Versions v0.x were public alpha releases. Version v0.1 was mostly to make sure d
 Versions v0.2 and v0.3 have the same field structure as v1.0, but significantly changed the way many of the HYG stars, especially from Gliese, were merged. 
 
 These versions are deprecated and should be replaced with v1.x or v2.x.
+
+### Data Formats
+#### Version 1.x Data Format
+
+Version 1.x has the following data fields:
+
+1. `id`: A numeric ID for each star, after sorting all entries by right ascension.
+2. `tyc`: The Tycho-2 ID, with leading zeros removed from the first and second portion (for consistency with Gaia linking tables)
+3. `gaia`: The Gaia Data Release 3 ID.
+4. `hyg`: The HYG main catalog ID from HYG v3.
+5. `hip`: The HIPPARCOS ID, from HYG if known, otherwise Tycho-2.
+6. `hd`: The Henry Draper (HD) catalog ID, from HYG if known, otherwise Tycho-2.
+7. `hr`: The Harvard / Yale Bright Star Catalog ID, from HYG.
+8. `gl`: The Gliese ID, from HYG
+9. `bayer`: The Bayer (Greek letter) designation, from HYG
+10. `flam`: The Flamsteed number, from HYG
+11. `con`: The three-letter constellation abbreviation, from HYG
+12. `proper`: A proper name for the star, from HYG
+13. `ra`: Right ascension (epoch + equinox 2000.0), in hours, from HYG or TYC
+14. `dec`: Declination (epoch + equinox 2000.0), in degrees, from HYG or TYC
+15. `pos_src`: Indicator of source for the position fields `ra` and `dec` (see below)
+16. `dist`: Distance from Sol in parsecs. From Gaia if known, otherwise HYG.
+17. `x0`
+18. `y0`
+19. `z0`: These three fields are Cartesian coordinates. The directions are such that x is towards RA 0, Dec 0, y towards RA 6 hr., Dec 0, and z towards Dec 90 degrees.
+20. `dist_src`: Indicator of source for the distance fields `dist`, `x0`, `y0`, `z0` (see below). `x0`, `y0`, and `z0` also depend on `ra` and `dec`, so they will also be determined by the position source. An extremely common combination is raw distance from Gaia but the position from TYC.
+21. `mag`: V or VT magnitude for the star
+22. `absmag`: Corresponding absolute magnitude
+23. `mag_src`: Indicator of source for the magnitude field `mag` (see below). `absmag` depends on both apparent magnitude and distance, so may be determined by values from two sources.
+
+Since different versions of the DB may add or remove records, the `id` value is necessarily associated with a specific version. 
+
+#### Version 2.x Data Format
+
+The fields for Version 1 are present unchanged, but with the following new fields:
+
+24. `rv`: Radial velocity in km/sec.
+25. `rv_src`: Indicator of source for the radial velocity
+26. `pm_ra`: Proper motion in right ascension, milliarcseconds/year (aleady multiplied by cos(dec))
+27. `pm_dec`: Proper motion in declination, milliarcseconds/year
+28. `pm_src`: Indicator of source for the proper motions
+29. `vx`:  
+30. `vy`:  
+31. `vz`: These three fields are Cartesian velocity values, using the same coordinate system described for the `x0`,`y0`, and `z0` fields above.
+32. `spect`: MK spectral type (v2.2+)
+33. `spect_src`: Source for the spectral type (v2.2+)
+
+Additionally, in versions 2.1 and up, the following added field is present:
+
+34. `ci`: the color index (BT-VT for Tycho-2 stars, B-V for others). This field is inserted after the `absmag` field, to keep magnitude-related data grouped together.
+
 
 ### Source Data And Assembly:
 

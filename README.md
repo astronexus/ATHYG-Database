@@ -16,15 +16,15 @@ By merging AT with HYG, the "classical" IDs and names for a large number of Tych
 
 ### Download Format
 
-#### Full Catalog (data/athyg_v23-*.csv)
+#### Full Catalog (version 2.4 - data/athyg_v24-*.csv)
 
-The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.3):
+The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.4):
 
-`cat athyg_v23-1.csv athyg_v23-2.csv > athyg_v23.csv`
+`cat athyg_v24-1.csv athyg_v24-2.csv > athyg_v24.csv`
 
 The full CSV can then be imported into the database tool of your choosing.
 
-#### Subset files (data/subsets)
+#### Subset files (version 2.4 - data/subsets)
 
 Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simle extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
 
@@ -32,25 +32,13 @@ See data/subsets/README.md for more details about these files.
 
 ### Current Version: 
 
-The current version of AT-HYG is version v2.3 (data/athyg_v23-*.csv.gz). 
+The current version of AT-HYG is version v2.4 (data/athyg_v24-*.csv.gz). 
 
-#### Changes from version 2.2:
+#### Changes from version 2.3:
 
-##### Additional radial velocity data for ~ 10K stars
-All versions of AT-HYG from v1.1 to v2.3 identified a set of Tycho-2 stars that lacked Gaia DR3 cross-references in the original query to get the references, but which do have Gaia DR2 or DR3 IDs, and hence Gaia parallax data, according to the SIMBAD service of online astronomical object data (https://simbad.cds.unistra.fr/simbad/). This is a group of about 10K stars identified during the AT-HYG v1.x builds as a set of stars desirable to get additional information for, using SIMBAD to get the relevant information. In particular, it consists of the relatively brighter stars in Tycho-2 (down to magnitude 10.0) where this information was missing originally.
+##### Remove problematic parallax / distance data from Tycho-2/Gaia DR3 link table
 
-From v1.1 to v2.2, this supplementary lookup set included Gaia DR2 and DR3 parallaxes but not proper motions or radial velocities. The absence of proper motions was not considered significant because essentially all Tycho-2 stars have good proper motions from Tycho-2. However, Tycho-2 has no radial velocities, so this subset of stars had consistently incomplete velocity data.
-
-The update in v2.3 works with the exact same set of stars, and adds similar lookups for SIMBAD's current preferred proper motions and radial velocities, inserting them under the same conditions that v1.1 through v2.2 used to insert the SIMBAD Gaia parallax data:
-
-* there was no prior cross-reference between Tycho-2 and Gaia, so the original query contained no Gaia position or velocity data (most common case)
-* there was a prior cross-reference, but it did not return Gaia radial velocity data when it was available (very uncommon case)
-
-The update primarily affects stars in the range VT = 7.0 to 10.0, so it has negligible impact on naked-eye stars (from Earth), but has a more noticeable one on stars somewhat dimmer than the usual naked eye limits.
-
-##### Data format changes
-
-To save space in CSV format, the `NONE` value (for data sources when the source contained no usable data) has been changed to `N`.
+I identified 5715 stars in the original link table between Tycho-2 and Gaia DR3 data that had Gaia standard errors of measurement on the parallax that exceeded the actual parallax value. Since these figures can't be reliably distinguished from "unmeasurably large", they have all been converted into empty/NULL values for the distance in this data set, and thus in all derivatives, such as AT-HYG.
 
 #### Comparison to HYG
 
