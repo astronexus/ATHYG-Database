@@ -16,29 +16,30 @@ By merging AT with HYG, the "classical" IDs and names for a large number of Tych
 
 ### Download Format
 
-#### Full Catalog (version 2.4 - data/athyg_v24-*.csv)
+#### Full Catalog (version 2.5 - data/athyg_v25-*.csv)
 
-The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.4):
+The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 2.5):
 
-`cat athyg_v24-1.csv athyg_v24-2.csv > athyg_v24.csv`
+`cat athyg_v25-1.csv athyg_v25-2.csv > athyg_v25.csv`
 
 The full CSV can then be imported into the database tool of your choosing.
 
-#### Subset files (version 2.4 - data/subsets)
+#### Subset files (version 2.5 - data/subsets)
 
-Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simle extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
+Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simple extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
 
 See data/subsets/README.md for more details about these files.
 
 ### Current Version: 
 
-The current version of AT-HYG is version v2.4 (data/athyg_v24-*.csv.gz). 
+The current version of AT-HYG is version v2.5 (data/athyg_v25-*.csv.gz). 
 
-#### Changes from version 2.3:
+#### Changes from version 2.4:
+##### Remove problematic proper motion and radial velocity distance data from Tycho-2/Gaia DR3 link table
 
-##### Remove problematic parallax / distance data from Tycho-2/Gaia DR3 link table
+The update for v2.5 is similar to the change for the previos version (v2.4). For the Augmented Tycho (AT) source catalog, I identified stars in the original link table between Tycho-2 and Gaia DR3 data that had Gaia standard errors of measurement on either the proper motion or the radial velocity that exceeded the actual value. Since these figures can't be reliably distinguished from "unmeasurably small proper motion or radial velocity", they have all been converted into empty/NULL values for the corresponding velocity in this data set, and thus in all derivatives, such as AT-HYG.
 
-I identified 5715 stars in the original link table between Tycho-2 and Gaia DR3 data that had Gaia standard errors of measurement on the parallax that exceeded the actual parallax value. Since these figures can't be reliably distinguished from "unmeasurably small parallax / large distance", they have all been converted into empty/NULL values for the distance in this data set, and thus in all derivatives, such as AT-HYG.
+The number of proper motions that were invalidated is quite low: 166 out of 2.5M stars. This is in part because I was only concerned about total error, not per-component error (i.e., it was fine for the error in the R.A. component to exceed the actual component, so long as the total error for the measurement was still less than the total proper motion overall). Problematic radial velocities were more common: 116,978 stars total. As with other data sources, proper motions from Tycho-2 and radial velocities from one of the HYG sources could be used in place of the missing Gaia results, but these are extremely uncommon (only a tiny number of Gaia proper motions were invalidated, and relatively few HYG stars compared to AT stars had radial velocity data of any quality). 
 
 #### Comparison to HYG
 

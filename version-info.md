@@ -2,7 +2,12 @@
 
 ### Version-Specific Changes
 
-The current version is v2.4. See the main README.md file for a description of this version's changes.
+The current version is v2.5. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v2.3 to v2.4:
+##### Remove problematic parallax / distance data from Tycho-2/Gaia DR3 link table
+
+I identified 5715 stars in the original link table between Tycho-2 and Gaia DR3 data that had Gaia standard errors of measurement on the parallax that exceeded the actual parallax value. Since these figures can't be reliably distinguished from "unmeasurably small parallax / large distance", they have all been converted into empty/NULL values for the distance in this data set, and thus in all derivatives, such as AT-HYG.
 
 #### Changes from version v2.2 to v2.3:
 ##### Additional radial velocity data for ~ 10K stars
