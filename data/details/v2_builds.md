@@ -56,16 +56,16 @@ AT v2.0 added proper motion and radial velocity data from Gaia DR3 to most Tycho
 
 As before, AT v2.5 contains _every_ star in the Tycho-2 catalog with valid Tycho-2 visual magnitude data (only 20 stars out of over 2.5 million dropped, because of invalid magnitude values), along with its HIP ID, HD ID, Gaia DR3 ID, and Gaia distance/parallax, proper motions, and radial velocities when these values are known. It also contains computed values for the Cartesian velocity components vx, vy, and vz that can be used directly whenever possible.
 
-#### Generating the merged Augmented Tycho-HYG (AT-HYG) catalog v2.5
+#### Generating the merged Augmented Tycho-HYG (AT-HYG) catalog v2.6
 
 This followed an almost identical process to the process described in details_v1.md.
 
-The current starting points for AT-HYG v2.5 are:
+The current starting points for AT-HYG v2.6 are:
 
 * AT v2.5 (described above)
-* HYG v3.7.
+* HYG v3.8.
 
-HYG v3.7 is a minor update to the version used for AT-HYG v1.1 and older builds (HYG v3.6.1). It adds some data for Yale Bright Star Catalog stars that was missing or incorrect in previous versions.
+HYG v3.8 is a minor update to the version used for AT-HYG v1.1 and older builds (HYG v3.6.1). It adds some data for Yale Bright Star Catalog stars that was missing or incorrect in previous versions, and also 78 new proper names from the January, 2021 version of the IAU official stellar proper names list.
 
 Significant differences in the AT-HYG build from v1.x were:
 
@@ -80,18 +80,20 @@ Significant differences in the AT-HYG build from v1.x were:
     * add spectral types for the stars in AT v2.2 when available, and from HYG when available there but not in AT.
 * v2.3 - v2.5
     * no major changes to merging AT results with HYG. The changes from each AT version (AT v2.2 to AT v2.5) filter naturally into the corresponding AT-HYG version.
+* v2.6
+    * no major changes to merging AT results with HYG. The change from HYG v3.7 to v3.8 filters naturally into the updated AT-HYG version.
 
 ### Data quality
 
 Data quality issues are largely the same as in details_v1.md, except for issues specific to proper motion and radial velocity data.
 
-AT-HYG v2.5 addresses a data quality issue recorded in all prior AT-HYG releases -- a small number (~ 5%) of stars that should not have been assigned radial velocity based on the Gaia DR3 results, and an even smaller number (only 0.007 %) that should not have been assigned proper motion data based on the Gaia DR3 results
+AT-HYG v2.6 is a fairly small update to add HYG v3.8 to AT v2.5. The only difference between v3.8 and the previous version is an update set of stellar proper names.
 
-Currently, there are two data quality items present in AT-HYG 2.1 through AT-HYG v2.5 that are not entirely addressed.
+Currently, there are two data quality items present in AT-HYG 2.1 through AT-HYG v2.6 that are not entirely addressed.
 
-#### Still outstanding in v2.5
+#### Still outstanding in v2.6
 
-Two issues/aspects of the data set that are still present in v2.5, and relatively minor by comparison to the previously resolved aspects in the last few minor versions:
+Two issues/aspects of the data set that are still present in v2.6, and relatively minor by comparison to the previously resolved aspects in the last few minor versions:
 
 1. (v2.1+) There are several thousand HYG stars with only a Gliese ID (no HIP or HR IDs). These can't be linked directly to AT-HYG, so they have been augmented with a SIMBAD query to get a valid Tycho-2 ID cross-reference, and to do additional lookups for parallax, proper motions, and radial velocities. (Note -- this is a separate SIMBAD lookup from the one described above to get Gaia data from stars in Tycho-2 without a previously indexed Tycho-Gaia cross-reference.) 
 

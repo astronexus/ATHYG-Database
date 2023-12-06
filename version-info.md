@@ -2,7 +2,14 @@
 
 ### Version-Specific Changes
 
-The current version is v2.5. See the main README.md file for a description of this version's changes.
+The current version is v2.6. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v2.4 to v2.5:
+##### Remove problematic proper motion and radial velocity distance data from Tycho-2/Gaia DR3 link table
+
+The update for v2.5 is similar to the change for the previous version (v2.4). For the Augmented Tycho (AT) source catalog, I identified stars in the original link table between Tycho-2 and Gaia DR3 data that had Gaia standard errors of measurement on either the proper motion or the radial velocity that exceeded the actual value. Since these figures can't be reliably distinguished from "unmeasurably small proper motion or radial velocity", they have all been converted into empty/NULL values for the corresponding velocity in this data set, and thus in all derivatives, such as AT-HYG.
+
+The number of proper motions that were invalidated is quite low: 166 out of 2.5M stars. This is in part because I was only concerned about total error, not per-component error (i.e., it was fine for the error in the R.A. component to exceed the actual component, so long as the total error for the measurement was still less than the total proper motion overall). Problematic radial velocities were more common: 116,978 stars total. As with other data sources, proper motions from Tycho-2 and radial velocities from one of the HYG sources could be used in place of the missing Gaia results, but these are extremely uncommon (only a tiny number of Gaia proper motions were invalidated, and relatively few HYG stars compared to AT stars had radial velocity data of any quality). 
 
 #### Changes from version v2.3 to v2.4:
 ##### Remove problematic parallax / distance data from Tycho-2/Gaia DR3 link table
