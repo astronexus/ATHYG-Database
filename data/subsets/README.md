@@ -4,19 +4,19 @@ For some applications, the full AT-HYG catalog may still be too large. I have th
 
 ### Current Data Subsets:
 
-All of these use the current base version of AT-HYG (v2.5), which in turn used HYG 3.7 for the HYG data properties.
+All of these use the current base version of AT-HYG (v2.6), which in turn used HYG 3.8 for the HYG data properties.
 
 The first two subsets, in addition to the magnitude cutoffs described, also include all nearby stars (to 100.0 light years) regardless of magnitude. The field names and data values are identical to the corresponding full AT-HYG entries. In particular, the `id` field in these subsets is the same as the serial `id` field in the full AT-HYG catalog, so its values will not be consistently consecutive in the subsets.
 
-#### AT-HYG v2.5 to magnitude 11: 871,153 stars
+#### AT-HYG v2.6 to magnitude 11: 871,153 stars
 
 This subset contains all AT-HYG stars to V (for HIP and Gliese) or VT (for Tycho-2) magnitude +11.0.
 
-#### AT-HYG v2.5 to magnitude 10: 330,341 stars
+#### AT-HYG v2.6 to magnitude 10: 330,341 stars
 
 This subset contains all AT-HYG stars to V (for HIP and Gliese) or VT (for Tycho-2) magnitude +10.0. 
 
-#### HYGLike v2.5 (all HYG stars in AT-HYG): 118,971 stars
+#### HYGLike v2.6 (all HYG stars in AT-HYG): 118,971 stars
 
 This subset follows the field name and contents for HYG v3.x as closely as possible, for all stars in AT-HYG that have an entry in HYG. The subset is intended as a drop-in replacement for HYG for many applications that use HYG, but with better data. For example, just under 90% of stars in HYG v3.x have Gaia DR3 distance data in AT-HYG v2.4, and thus also in HYGLike v2.4. The only difference in field names is the addition of the `*_src` fields from AT-HYG to identify the sources for each of the various data points. These fields can be dropped if desired in an application using the catalog.
 
