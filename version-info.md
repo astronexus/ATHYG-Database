@@ -2,7 +2,12 @@
 
 ### Version-Specific Changes
 
-The current version is v2.6. See the main README.md file for a description of this version's changes.
+The current version is v3.0. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v2.5 to v2.6:
+##### Change version of HYG used from v3.7 to v3.8
+
+The update for v2.6 adds 78 new proper names for stars that correspond directly to 78 new proper names in HYG v3.8. No other data has been changed.
 
 #### Changes from version v2.4 to v2.5:
 ##### Remove problematic proper motion and radial velocity distance data from Tycho-2/Gaia DR3 link table
