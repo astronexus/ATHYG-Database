@@ -2,7 +2,16 @@
 
 ### Version-Specific Changes
 
-The current version is v3.0. See the main README.md file for a description of this version's changes.
+The current version is v3.1. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v2.6 to v3.0:
+##### Change version of HYG used from v3.8 to v4.0
+
+The update for v3.0 adds 10 new proper names for stars that correspond directly to 10 new proper names in HYG v4.0. No other data has been changed.
+
+##### Change license to CC BY-SA-4.0
+
+This is the main motivation for a major version update. HYG v4.0 is licensed under the newer CC BY-SA-4.0 license stated above, and so newer versions of AT-HYG (3.0 and up) will also use the same license. Versions prior to v3.0 will continue to have the CC BY-SA-2.5 license.
 
 #### Changes from version v2.5 to v2.6:
 ##### Change version of HYG used from v3.7 to v3.8
