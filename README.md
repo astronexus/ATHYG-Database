@@ -22,9 +22,7 @@ This work is licensed under a
 
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 
----
-
-This applies to the current version (v3.1). Older versions (prior to v3.0) are licensed under CC BY-SA 2.5.
+This license applies to versions v3.0 and later. Older versions (prior to v3.0) are licensed under CC BY-SA 2.5.
 
 ### Download Format
 
@@ -47,12 +45,10 @@ See data/subsets/README.md for more details about these files.
 The current version of AT-HYG is version v3.1 (data/athyg_v31-*.csv.gz). 
 
 #### Changes from version 3.0:
-##### Incoroprate changes from HYG v4.0 to v4.1
+##### Incorporate changes from HYG v4.0 to v4.1
 
 The update for v3.1 adds 11 new proper names for stars that correspond directly to 11 new proper names in HYG v4.1, specifically to components of double or multiple stars
 where a specific proper name for the "B" component was desired. No other data has been changed.
-
-
 
 #### Comparison to HYG
 
