@@ -1,6 +1,6 @@
-## Augmented Tycho - HYG (AT-HYG)
+# Augmented Tycho - HYG (AT-HYG)
 
-### Rationale
+## Rationale
 
 HIPPARCOS (and thus HYG) is getting a little dated, while Gaia (its ultimate replacement for many purposes) is absolutely gigantic -- 1.3 billion records -- and too large for many general-purpose applications. For this update, I wanted to accomplish the following:
 
@@ -14,7 +14,7 @@ Tycho-2 (released in 2000) is only slightly younger than HIPPARCOS, so the idea 
 
 By merging AT with HYG, the "classical" IDs and names for a large number of Tycho / Gaia stars are also available. The result is AT-HYG. 
 
-### License
+## License
 
 
 This work is licensed under a
@@ -24,9 +24,9 @@ This work is licensed under a
 
 This license applies to versions v3.0 and later. Older versions (prior to v3.0) are licensed under CC BY-SA 2.5.
 
-### Download Format
+## Download Format
 
-#### Full Catalog (version 3.1 - data/athyg_v31-*.csv)
+### Full Catalog (version 3.1 - data/athyg_v31-*.csv)
 
 The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 3.1):
 
@@ -34,23 +34,23 @@ The full catalog, even when compressed, is too large for simple hosting in this 
 
 The full CSV can then be imported into the database tool of your choosing.
 
-#### Subset files (version 3.1 - data/subsets)
+### Subset files (version 3.1 - data/subsets)
 
 Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simple extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
 
 See data/subsets/README.md for more details about these files.
 
-### Current Version: 
+## Current Version: 
 
 The current version of AT-HYG is version v3.1 (data/athyg_v31-*.csv.gz). 
 
-#### Changes from version 3.0:
-##### Incorporate changes from HYG v4.0 to v4.1
+### Changes from version 3.0:
+#### Incorporate changes from HYG v4.0 to v4.1
 
 The update for v3.1 adds 11 new proper names for stars that correspond directly to 11 new proper names in HYG v4.1, specifically to components of double or multiple stars
 where a specific proper name for the "B" component was desired. No other data has been changed.
 
-#### Comparison to HYG
+### Comparison to HYG
 
 The HYG catalog lists proper motions and radial velocities in the same units as AT-HYG (milliarcsec/year and km/sec respectively), but has the Cartesian velocities vx, vy, and vz in parsecs per year. AT-HYG uses kilometers per second, in part to reduce the space needed for figures in CSV format (the figures in pc/year have 5 or 6 leading zeroes) and in part to make direct comparisons to the radial velocity simple. The conversion factor for converting km/sec to pc/year is 1 km/sec = 1.02269 E-6 pc/year.
 
@@ -59,6 +59,6 @@ Apart from the difference in units for vx, vy, and vz, and a few slightly differ
 * Variable star IDs and approximate magnitude ranges
 * Explicit identification of components in multiple stars (in terms of a "base ID" representing the primary and a component ID)
 
-### Other Versions:
+## Other Versions:
 
 See version-info.md for more details on previous versions of the catalog.
