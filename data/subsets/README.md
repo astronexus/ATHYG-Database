@@ -4,7 +4,7 @@ For some applications, the full AT-HYG catalog may still be too large. I have th
 
 ## Current Data Subsets:
 
-All of these use the current base version of AT-HYG (v3.1), which in turn used HYG 4.1 for the HYG data properties.
+All of these use the current base version of AT-HYG (v3.2), which in turn used HYG 4.1 for the HYG data properties.
 
 ### AT-HYG Data Schema
 
@@ -12,29 +12,29 @@ These all use the same column names and contents as the full AT-HYG database. Th
 
 The first two subsets, in addition to the magnitude cutoffs described, also include all nearby stars (to 100.0 light years) regardless of magnitude. 
 
-#### athyg_31_reduced_m11.csv: AT-HYG v3.1 to magnitude 11 (871,153 stars)
+#### athyg_32_reduced_m11.csv: AT-HYG v3.2 to magnitude 11 (871,139 stars)
 
 This subset contains all AT-HYG stars to V (for HIP and Gliese) or VT (for Tycho-2) magnitude +11.0.
 
-#### athyg_31_reduced_m10.csv: AT-HYG v3.1 to magnitude 10 (330,341 stars)
+#### athyg_32_reduced_m10.csv: AT-HYG v3.2 to magnitude 10 (330,327 stars)
 
 This subset contains all AT-HYG stars to V (for HIP and Gliese) or VT (for Tycho-2) magnitude +10.0. 
 
-#### athyg_31_classic_ids.csv: AT-HYG v3.1 stars with 'classic' names and IDs (317,175 stars)
+#### athyg_32_classic_ids.csv: AT-HYG v3.2 stars with 'classic' names and IDs (317,175 stars)
 
 This subset contains all AT-HYG stars with a proper name (from the official IAU list), a Bayer Greek letter designation, a Flamsteed number, or a catalog identifier in any of these catalogs: HIPPARCOS, Henry Draper, Yale Bright Star (HR), and Gliese/Jahreiss.
 
-#### athyg_31_hyg_ids.csv: AT-HYG v3.1 stars with HYG IDs (118,971 stars)
+#### athyg_32_hyg_ids.csv: AT-HYG v3.2 stars with HYG IDs (118,971 stars)
 
 This subset contains all AT-HYG stars with at least some data coming from HYG. Specifically, it contains all AT-HYG stars that were initially sourced from HYG (and then possibly augmented with Gaia data later on). It is designed to be a HYG-equivalent in the AT-HYG data schema, for use with AT-HYG-reading applications that want to use the HYG data as closely as possible.
 
-Since this is a subset of AT-HYG, it inherits the data improvements from Gaia that characterize AT-HYG and distinguish it from the original HYG. For example, just under 90% of stars in HYG v3.x have Gaia DR3 distance data in AT-HYG v3.1, and thus also in this subset of AT-HYG data. 
+Since this is a subset of AT-HYG, it inherits the data improvements from Gaia that characterize AT-HYG and distinguish it from the original HYG. For example, just under 90% of stars in HYG v3.x have Gaia DR3 distance data in AT-HYG v3.2, and thus also in this subset of AT-HYG data. 
 
 ### HYG Data Schema
 
 These use the same column names and (with a few minor exceptions, noted below) the same data values as the HYG catalog (v4.x).
 
-#### hyglike_from_athyg_v31.csv: HYGLike v3.1 (all HYG stars in AT-HYG) (118,971 stars)
+#### hyglike_from_athyg_v32.csv: HYGLike v3.2 (all HYG stars in AT-HYG) (118,971 stars)
 
 This is the same data set as the "AT-HYG stars with HYG IDs" above, but follows the field name and contents for HYG v3.x and v4.x as closely as possible. It is intended as a drop-in replacement for HYG for many applications that use HYG, but with better data. The only difference in field names from HYG v3.x and v4.x is the addition of the `*_src` fields from AT-HYG to identify the sources for each of the various data points. These fields can be dropped if desired in an application using the catalog.
 

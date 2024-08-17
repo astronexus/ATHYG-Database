@@ -26,15 +26,15 @@ This license applies to versions v3.0 and later. Older versions (prior to v3.0) 
 
 ## Download Format
 
-### Full Catalog (version 3.1 - data/athyg_v31-*.csv)
+### Full Catalog (version 3.2 - data/athyg_v32-*.csv)
 
-The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 3.1):
+The full catalog, even when compressed, is too large for simple hosting in this repository. It is currently split into 2 components, which should be downloaded, uncompressed, and concatenated, e.g. (Linux command for version 3.2):
 
-`cat athyg_v31-1.csv athyg_v31-2.csv > athyg_v31.csv`
+`cat athyg_v32-1.csv athyg_v32-2.csv > athyg_v32.csv`
 
 The full CSV can then be imported into the database tool of your choosing.
 
-### Subset files (version 3.1 - data/subsets)
+### Subset files (version 3.2 - data/subsets)
 
 Several smaller subset files are available if the full catalog is still too large. One of these, the "HYGLike" subset, is designed to have a similar schema to the HYG Database and be a drop-in replacement for it in many applications. The other subset files are simple extracts from the main AT-HYG that have a lower (brighter) magnitude cutoff for most stars.
 
@@ -42,13 +42,12 @@ See data/subsets/README.md for more details about these files.
 
 ## Current Version: 
 
-The current version of AT-HYG is version v3.1 (data/athyg_v31-*.csv.gz). 
+The current version of AT-HYG is version v3.2 (data/athyg_v32-*.csv.gz). 
 
-### Changes from version 3.0:
-#### Incorporate changes from HYG v4.0 to v4.1
+### Changes from version 3.1:
+#### Incorporate Gaia DR3 data for HIP stars that lacked it in original merge
 
-The update for v3.1 adds 11 new proper names for stars that correspond directly to 11 new proper names in HYG v4.1, specifically to components of double or multiple stars
-where a specific proper name for the "B" component was desired. No other data has been changed.
+The update for v3.2 adds Gaia DR3 data to a subset of stars from HIPPARCOS that did not have a Gaia DR3 ID in the original Gaia-Tycho lookup results. There were 12132 such stars, of which 9646 had a valid Gaia DR3 parallax result according to SIMBAD. These 9646 stars all had their HIP distances updated to Gaia DR3 distances, and in most cases their proper motions and radial velocities updated to Gaia DR3 values as well. The proportion of stars in this release with a Gaia DR3 distance is now 97.5%, up from 97.1% in the previous release, including 1793 naked-eye stars (apparent magnitude 6.5 or brighter) that had only a HIP distance previously.
 
 ### Comparison to HYG
 

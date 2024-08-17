@@ -2,7 +2,13 @@
 
 ### Version-Specific Changes
 
-The current version is v3.1. See the main README.md file for a description of this version's changes.
+The current version is v3.2. See the main README.md file for a description of this version's changes.
+
+#### Changes from version v3.0 to v3.1:
+#### Incorporate changes from HYG v4.0 to v4.1
+
+The update for v3.1 adds 11 new proper names for stars that correspond directly to 11 new proper names in HYG v4.1, specifically to components of double or multiple stars
+where a specific proper name for the "B" component was desired. No other data has been changed.
 
 #### Changes from version v2.6 to v3.0:
 ##### Change version of HYG used from v3.8 to v4.0
