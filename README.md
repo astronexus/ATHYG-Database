@@ -53,7 +53,7 @@ The update for v3.2 adds Gaia DR3 data to a subset of stars from HIPPARCOS that 
 
 The HYG catalog lists proper motions and radial velocities in the same units as AT-HYG (milliarcsec/year and km/sec respectively), but has the Cartesian velocities vx, vy, and vz in parsecs per year. AT-HYG uses kilometers per second, in part to reduce the space needed for figures in CSV format (the figures in pc/year have 5 or 6 leading zeroes) and in part to make direct comparisons to the radial velocity simple. The conversion factor for converting km/sec to pc/year is 1 km/sec = 1.02269 E-6 pc/year.
 
-Apart from the difference in units for vx, vy, and vz, and a few slightly different field names, AT-HYG 3.1 is almost a drop-in replacement for HYG 3.x or HYG 4.x for many applications -- in particular, for any application that needs only the stars' catalog IDs, historical IDs (like Henry Draper or traditional names), magnitudes, positions, and velocities. The fields missing from AT-HYG that are present in HYG are:
+Apart from the difference in units for vx, vy, and vz, and a few slightly different field names, AT-HYG 3.2 is almost a drop-in replacement for HYG 3.x or HYG 4.x for many applications -- in particular, for any application that needs only the stars' catalog IDs, historical IDs (like Henry Draper or traditional names), magnitudes, positions, and velocities. The fields missing from AT-HYG that are present in HYG are:
 
 * Variable star IDs and approximate magnitude ranges
 * Explicit identification of components in multiple stars (in terms of a "base ID" representing the primary and a component ID)
